@@ -9,7 +9,7 @@ import './App.css';
 import logo from './spacex.png';
 
 const client = new ApolloClient({
-  uri: 'http://localhost:4000/graphql'
+  uri: '/graphql'
 });
 
 function App() {

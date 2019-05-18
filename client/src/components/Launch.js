@@ -31,6 +31,14 @@ export class Launch extends Component {
           <Query query={LAUNCH_QUERY} variables={{ flight_number }}>
             {
                 ({ loading, error, data }) => { 
+                    if (error) {
+                        return (
+                          <div class="alert alert-danger" role="alert">
+                            Error Fetching Launch Details
+                          </div>
+                        );
+                      }
+
                     if (Object.keys(data).length > 0) {
                         const { mission_name, flight_number, launch_year, launch_success, rocket: {
                             rocket_id, rocket_name, rocket_type
@@ -57,7 +65,7 @@ export class Launch extends Component {
                                         <li className="list-group-item">Rocket Type: { rocket_type }</li>
                                     </ul>
                                 
-                                <Link to="/" className="btn btn-secondary">Back</Link>
+                                <Link to="/" className="btn btn-dark">Back</Link>
                             </div>
                         )
                     }

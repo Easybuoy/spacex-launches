@@ -1,10 +1,10 @@
 import React, { Component, Fragment } from "react";
 import gql from "graphql-tag";
 import { Query } from "react-apollo";
-import { Triple } from 'react-preloading-component';
+import { Triple } from "react-preloading-component";
 
 import LaunchItem from "./LaunchItem";
-import MissionKey from './MissionKey';
+import MissionKey from "./MissionKey";
 
 const LAUNCHES_QUERY = gql`
   query LaunchesQuery {
@@ -18,9 +18,7 @@ const LAUNCHES_QUERY = gql`
 `;
 
 export class Launches extends Component {
-    componentDidMount() {
-        
-    }
+  componentDidMount() {}
   render() {
     return (
       <div>
@@ -28,10 +26,14 @@ export class Launches extends Component {
         <MissionKey />
         <Query query={LAUNCHES_QUERY}>
           {({ loading, error, data }) => {
-            console.log(loading);
-            console.log(error);
-            console.log(data);
-            console.log(Object.keys(data).length)
+            if (error) {
+              return (
+                <div class="alert alert-danger" role="alert">
+                  Error Fetching Launches
+                </div>
+              );
+            }
+
             if (Object.keys(data).length > 0) {
               return (
                 <Fragment>
@@ -42,7 +44,7 @@ export class Launches extends Component {
               );
             }
 
-            return <Triple />
+            return <Triple />;
           }}
         </Query>
       </div>
