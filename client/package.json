@@ -4,10 +4,15 @@
   "private": true,
   "dependencies": {
     "apollo-boost": "^0.3.1",
+    "classnames": "^2.2.6",
     "graphql": "^14.3.0",
+    "moment": "^2.24.0",
     "react": "^16.8.6",
     "react-apollo": "^2.5.5",
     "react-dom": "^16.8.6",
+    "react-moment": "^0.9.2",
+    "react-preloading-component": "0.0.5",
+    "react-router-dom": "^5.0.0",
     "react-scripts": "3.0.1"
   },
   "scripts": {
